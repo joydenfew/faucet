@@ -59,6 +59,76 @@ See :doc:`configuration` for more advanced configuration.
         prometheus_addr: ''
 
 
+Installation using APT
+----------------------
+
+We maintain a apt repo for installing faucet and its dependencies on Debian based Linux distributions.
+
+Here is a list of packages we supply:
+
+================= ===========================================================================================================================
+Package           Desription
+================= ===========================================================================================================================
+python3-faucet    Installs the faucet code base.
+faucet            Installs the code base, the faucet services and default config files
+gauge             Installs the code base, the gague monitor, the gauge service and default config files
+faucet-all-in-one Installs faucet, gauge, python3-faucet, prometheus and grafana. Easy to use and good for testing faucet for the first time.
+================= ===========================================================================================================================
+
+
+Installation on Debian 8 (jessie)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Installing faucet on jessie requires jessie-backports.
+
+First follow the `official instructions <https://backports.debian.org/Instructions/>`_ on adding the backports repo to jessie.
+
+.. code:: console
+
+  sudo apt-get install curl apt-transport-https
+  echo "deb https://packages.faucet.nz faucet main" | sudo tee /etc/apt/sources.list.d/faucet.list
+  sudo curl https://packages.faucet.nz/keyring.gpg -o /etc/apt/trusted.gpg.d/faucet.gpg
+  sudo apt-get install -t jessie-backports python3-oslo.config libjs-jquery libjs-mustache
+  sudo apt-get update
+
+Then to install all components for a fully functioning system on a single machine:
+
+.. code:: console
+
+  sudo apt-get install faucet-all-in-one
+
+or you can install the individual components:
+
+.. code:: console
+
+  sudo apt-get install faucet
+  sudo apt-get install gauge
+
+
+Installation on Debian 9+ and Ubuntu 16.04+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: console
+
+  sudo apt-get install curl apt-transport-https
+  echo "deb https://packages.faucet.nz faucet main" | sudo tee /etc/apt/sources.list.d/faucet.list
+  sudo curl https://packages.faucet.nz/keyring.gpg -o /etc/apt/trusted.gpg.d/faucet.gpg
+  sudo apt-get update
+
+Then to install all components for a fully functioning system on a single machine:
+
+.. code:: console
+
+  sudo apt-get install faucet-all-in-one
+
+or you can install the individual components:
+
+.. code:: console
+
+  sudo apt-get install faucet
+  sudo apt-get install gauge
+
+
 Installation with Docker
 ------------------------
 
