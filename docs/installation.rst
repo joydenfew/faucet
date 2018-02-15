@@ -67,7 +67,7 @@ We maintain a apt repo for installing faucet and its dependencies on Debian base
 Here is a list of packages we supply:
 
 ================= ===========================================================================================================================
-Package           Desription
+Package           Description
 ================= ===========================================================================================================================
 python3-faucet    Installs the faucet code base.
 faucet            Installs the code base, the faucet services and default config files
