@@ -2,6 +2,7 @@
 Description="Faucet OpenFlow switch controller"
 After=network-online.target
 Wants=network-online.target
+Documentation="https://github.com/faucetsdn/faucet"
 
 [Service]
 EnvironmentFile=/etc/default/faucet
