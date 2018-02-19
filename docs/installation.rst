@@ -66,14 +66,14 @@ We maintain a apt repo for installing faucet and its dependencies on Debian base
 
 Here is a list of packages we supply:
 
-================= ===========================================================================================================================
+================= ==========================================================================================================
 Package           Description
-================= ===========================================================================================================================
-python3-faucet    Installs the faucet code base.
-faucet            Installs the code base, the faucet services and default config files
-gauge             Installs the code base, the gague monitor, the gauge service and default config files
-faucet-all-in-one Installs faucet, gauge, python3-faucet, prometheus and grafana. Easy to use and good for testing faucet for the first time.
-================= ===========================================================================================================================
+================= ==========================================================================================================
+python3-faucet    Install standalone faucet/gauge python3 library
+faucet            Install python3 library, systemd service and default config files
+gauge             Install python3 library, systemd service and default config files
+faucet-all-in-one Install faucet, gauge, prometheus and grafana. Easy to use and good for testing faucet for the first time.
+================= ==========================================================================================================
 
 
 Installation on Debian 8 (jessie)
