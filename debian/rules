@@ -9,7 +9,7 @@ export PYBUILD_NAME=faucet
 	dh $@  --with python3,systemd --buildsystem=pybuild
 
 override_dh_installinit:
-	dh_installinit
+	dh_installinit --noscripts
 
 override_dh_auto_install:	
 	dh_auto_install
