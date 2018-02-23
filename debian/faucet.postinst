@@ -22,7 +22,7 @@ case "$1" in
   configure)
 
     addgroup --system faucet
-    adduser --system faucet --no-create-home --home /nonexistent --ingroup faucet
+    adduser --system faucet --ingroup faucet
 
     USER="faucet"
     GROUP="faucet"

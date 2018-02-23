@@ -1,3 +1,39 @@
+faucet (1.6.22-7) unstable; urgency=medium
+
+  * update to description
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Fri, 23 Feb 2018 14:30:08 +1300
+
+faucet (1.6.22-6) unstable; urgency=medium
+
+  * control file update
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Fri, 23 Feb 2018 9:43:11 +1300
+
+faucet (1.6.22-5) unstable; urgency=medium
+
+  * changing user creation back to its default behaviour
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Tue, 21 Feb 2018 9:43:11 +1300
+
+faucet (1.6.22-4) unstable; urgency=medium
+
+  * fix depends bug
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Tue, 20 Feb 2018 17:48:51 +1300
+
+faucet (1.6.22-3) unstable; urgency=medium
+
+  * version fixes
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Tue, 20 Feb 2018 17:11:37 +1300
+
+faucet (1.6.22-2) unstable; urgency=medium
+
+  * version of prometheus client set to >= 0.0.20
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Mon, 19 Feb 2018 17:52:12 +1300
+
 faucet (1.6.22-1) unstable; urgency=medium
 
   * Initial release of version 1.6.22-1
