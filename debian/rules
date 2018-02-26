@@ -2,7 +2,7 @@
 
 # output every command that modifies files on the build system.
 export DH_VERBOSE = 1
-
+export DEBINSTALL = 1
 export PYBUILD_NAME=faucet
 
 %:
@@ -11,7 +11,7 @@ export PYBUILD_NAME=faucet
 override_dh_installinit:
 	dh_installinit --noscripts
 
-override_dh_auto_install:	
+override_dh_auto_install:
 	dh_auto_install
 
 override_dh_auto_build:

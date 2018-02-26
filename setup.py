@@ -13,36 +13,52 @@ from setuptools import setup
 def install_configs():
     """ Install configuration files to /etc """
 
-    dst_ryu_conf_dir = '/etc/ryu/'
+    dst_ryu_conf_dir = '/etc/faucet/'
     dst_ryu_conf = os.path.join(dst_ryu_conf_dir, 'ryu.conf')
-    dst_faucet_conf_dir = '/etc/ryu/faucet/'
+    dst_faucet_conf_dir = '/etc/faucet/'
     src_ryu_conf = resource_filename(__name__, "etc/ryu/ryu.conf")
-    src_faucet_conf_dir = resource_filename(__name__, "etc/ryu/faucet/")
-    faucet_log_dir = '/var/log/ryu/faucet/'
+    src_faucet_conf_dir = resource_filename(__name__, "etc/faucet/")
+    faucet_log_dir = '/var/log/faucet/'
+
+    old_dst_ryu_conf_dir = '/etc/ryu/'
+    old_dst_ryu_conf = os.path.join(dst_ryu_conf_dir, 'ryu.conf')
+    old_dst_faucet_conf_dir = '/etc/ryu/faucet/'
+    old_src_ryu_conf = resource_filename(__name__, "etc/ryu/ryu.conf")
+    old_src_faucet_conf_dir = resource_filename(__name__, "etc/ryu/faucet/")
+    old_faucet_log_dir = '/var/log/ryu/faucet/'
 
     try:
         if not os.path.exists(dst_ryu_conf_dir):
             print("Creating %s" % dst_ryu_conf_dir)
             os.makedirs(dst_ryu_conf_dir)
         if not os.path.isfile(dst_ryu_conf):
-            print("Copying %s to %s" % (src_ryu_conf, dst_ryu_conf))
-            shutil.copy(src_ryu_conf, dst_ryu_conf)
+            if os.path.exists(old_src_ryu_conf) and os.path.isfile(old_src_ryu_conf):
+                print("Copying %s to %s" % (old_dst_ryu_conf, dst_ryu_conf))
+                shutil.copy(old_src_ryu_conf, dst_ryu_conf)
+            else:
+                print("Copying %s to %s" % (src_ryu_conf, dst_ryu_conf))
+                shutil.copy(src_ryu_conf, dst_ryu_conf)
         if not os.path.exists(dst_faucet_conf_dir):
             print("Creating %s" % dst_faucet_conf_dir)
             os.makedirs(dst_faucet_conf_dir)
-        for file_name in os.listdir(src_faucet_conf_dir):
+        for file_name in os.listdir(old_src_faucet_conf_dir):
             src_file = os.path.join(src_faucet_conf_dir, file_name)
             dst_file = os.path.join(dst_faucet_conf_dir, file_name)
-            if os.path.isfile(src_file) and not os.path.isfile(dst_file):
+            alt_src = os.path.join(old_dst_faucet_conf_dir, file_name)
+            if os.path.isfile(dst_file):
+                continue
+            elif os.path.isfile(src_file):
                 print("Copying %s to %s" % (src_file, dst_file))
                 shutil.copy(src_file, dst_file)
+            elif os.path.isfile(alt_src):
+                print("Copying %s to %s" % (alt_src, dst_file))
+                shutil.copy(alt_src, dst_file)
         if not os.path.exists(faucet_log_dir):
             print("Creating %s" % faucet_log_dir)
             os.makedirs(faucet_log_dir)
     except OSError as exception:
         if exception.errno == errno.EACCES:
-            print("Permission denied creating %s, skipping copying configs"
-                  % exception.filename)
+            print("Permission denied creating %s, skipping copying configs" % exception.filename)
         else:
             raise
 

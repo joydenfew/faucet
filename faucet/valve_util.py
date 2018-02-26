@@ -61,21 +61,21 @@ def get_sys_prefix():
 _PREFIX = get_sys_prefix()
 # To specify a boolean-only setting, set the default value to a bool type.
 DEFAULTS = {
-    'FAUCET_CONFIG': _PREFIX + '/etc/ryu/faucet/faucet.yaml',
+    'FAUCET_CONFIG': _PREFIX + '/etc/faucet/faucet.yaml',
     'FAUCET_CONFIG_STAT_RELOAD': False,
     'FAUCET_LOG_LEVEL': 'INFO',
-    'FAUCET_LOG': _PREFIX + '/var/log/ryu/faucet/faucet.log',
+    'FAUCET_LOG': _PREFIX + '/var/log/faucet/faucet.log',
     'FAUCET_EVENT_SOCK': '',  # Special-case, see get_setting().
-    'FAUCET_EXCEPTION_LOG': _PREFIX + '/var/log/ryu/faucet/faucet_exception.log',
+    'FAUCET_EXCEPTION_LOG': _PREFIX + '/var/log/faucet/faucet_exception.log',
     'FAUCET_PROMETHEUS_PORT': '9302',
     'FAUCET_PROMETHEUS_ADDR': '0.0.0.0',
-    'FAUCET_PIPELINE_DIR': _PREFIX + '/etc/ryu/faucet',
-    'GAUGE_CONFIG': _PREFIX + '/etc/ryu/faucet/gauge.yaml',
+    'FAUCET_PIPELINE_DIR': _PREFIX + '/etc/faucet',
+    'GAUGE_CONFIG': _PREFIX + '/etc/faucet/gauge.yaml',
     'GAUGE_CONFIG_STAT_RELOAD': False,
     'GAUGE_LOG_LEVEL': 'INFO',
     'GAUGE_PROMETHEUS_ADDR': '0.0.0.0',
-    'GAUGE_EXCEPTION_LOG': _PREFIX + '/var/log/ryu/faucet/gauge_exception.log',
-    'GAUGE_LOG': _PREFIX + '/var/log/ryu/faucet/gauge.log',
+    'GAUGE_EXCEPTION_LOG': _PREFIX + '/var/log/faucet/gauge_exception.log',
+    'GAUGE_LOG': _PREFIX + '/var/log/faucet/gauge.log',
 }
 
 
