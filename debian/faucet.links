@@ -1,6 +1,0 @@
-/usr/etc/ryu/faucet /usr/share/doc/faucet/examples
-/usr/etc/ryu/ryu.conf /etc/faucet/ryu.conf
-/usr/etc/ryu/faucet/faucet.yaml /etc/faucet/faucet.yaml
-/usr/etc/ryu/faucet/acls.yaml /etc/faucet/acls.yaml
-/usr/etc/ryu/faucet/ofproto_to_ryu.json /etc/faucet/ofproto_to_ryu.json
-/usr/etc/ryu/faucet/aruba_pipeline.json /etc/faucet/aruba_pipeline.json
