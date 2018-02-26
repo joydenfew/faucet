@@ -69,4 +69,5 @@ setup(
 )
 
 if 'install' in sys.argv or 'bdist_wheel' in sys.argv:
-    install_configs()
+    if os.getenv("DEBINSTALL") is None or (os.getenv("DEBINSTALL") is not None and int(os.environ['DEBINSTALL']) < 1):
+        install_configs()
