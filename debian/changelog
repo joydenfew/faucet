@@ -1,3 +1,11 @@
+faucet (1.6.22-8) unstable; urgency=medium
+
+  * changes made to no longer rely on old config file structure
+  * changes made to no longer rely on setup.py for file allocation
+  * this is a tempory step as some changes will be pushed out in a later release of faucet
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Tue, 27 Feb 2018 12:55:17 +1300
+
 faucet (1.6.22-7) unstable; urgency=medium
 
   * update to description
