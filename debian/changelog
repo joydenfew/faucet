@@ -22,7 +22,7 @@ faucet (1.6.22-5) unstable; urgency=medium
 
   * changing user creation back to its default behaviour
 
- -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Tue, 21 Feb 2018 9:43:11 +1300
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Wed, 21 Feb 2018 9:43:11 +1300
 
 faucet (1.6.22-4) unstable; urgency=medium
 
