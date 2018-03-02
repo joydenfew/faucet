@@ -85,9 +85,9 @@ First follow the `official instructions <https://backports.debian.org/Instructio
 
 .. code:: console
 
-  sudo apt-get install curl apt-transport-https
-  echo "deb https://packages.faucet.nz faucet main" | sudo tee /etc/apt/sources.list.d/faucet.list
-  sudo curl https://packages.faucet.nz/keyring.gpg -o /etc/apt/trusted.gpg.d/faucet.gpg
+  sudo apt-get install curl apt-transport-https gnupg lsb-release
+  echo "deb https://packagecloud.io/faucetsdn/faucet/$(lsb_release -si | awk '{print tolower($0)}')/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/faucet.list
+  curl -L https://packagecloud.io/faucetsdn/faucet/gpgkey | sudo apt-key add -
   sudo apt-get install -t jessie-backports python3-oslo.config libjs-jquery libjs-mustache
   sudo apt-get update
 
@@ -110,10 +110,11 @@ Installation on Debian 9+ and Ubuntu 16.04+
 
 .. code:: console
 
-  sudo apt-get install curl apt-transport-https
-  echo "deb https://packages.faucet.nz faucet main" | sudo tee /etc/apt/sources.list.d/faucet.list
-  sudo curl https://packages.faucet.nz/keyring.gpg -o /etc/apt/trusted.gpg.d/faucet.gpg
+  sudo apt-get install curl gnupg apt-transport-https lsb-release
+  echo "deb https://packagecloud.io/faucetsdn/faucet/$(lsb_release -si | awk '{print tolower($0)}')/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/faucet.list
+  curl -L https://packagecloud.io/faucetsdn/faucet/gpgkey | sudo apt-key add -
   sudo apt-get update
+
 
 Then to install all components for a fully functioning system on a single machine:
 
