@@ -130,6 +130,7 @@ or you can install the individual components:
   sudo apt-get install gauge
 
 .. raw:: html
+
 <a href="https://packagecloud.io/"><img height="46" width="158" alt="Private NPM registry and Maven, RPM, DEB, PyPi and RubyGem Repository · packagecloud" src="https://packagecloud.io/images/packagecloud-badge.png" /></a>
 
 Installation with Docker
