@@ -1,1 +1,1 @@
-etc/faucet/prometheus/prometheus.yml /etc/faucet/prometheus/
+vm/elements/prometheus/install.d/prometheus.yml /etc/faucet/prometheus/

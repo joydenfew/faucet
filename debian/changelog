@@ -1,3 +1,9 @@
+faucet (1.6.25-2) unstable; urgency=medium
+
+  * prometheus config files added to /etc/faucet/prometheus
+
+ -- Jayden Hewer <jfh13@students.waikato.ac.nz>  Mon, 5 Mar 2018 14:21:39 +1300
+
 faucet (1.6.25-1) unstable; urgency=medium
 
   * faucet packaged for debian

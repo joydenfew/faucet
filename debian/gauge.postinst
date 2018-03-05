@@ -5,18 +5,6 @@
 
 set -e
 
-# summary of how this script can be called:
-#        * <postinst> `configure' <most-recently-configured-version>
-#        * <old-postinst> `abort-upgrade' <new version>
-#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
-#          <new-version>
-#        * <postinst> `abort-remove'
-#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
-#          <failed-install-package> <version> `removing'
-#          <conflicting-package> <version>
-# for details, see https://www.debian.org/doc/debian-policy/ or
-# the debian-policy package
-
 case "$1" in
 
   configure)
@@ -30,14 +18,6 @@ case "$1" in
     echo 'creating dir for logs package.postinst'
     mkdir -p /var/log/gauge
     mkdir -p /etc/faucet
-
-#   if [ ! -f /etc/faucet/gauge.yaml ] && [ -e /usr/etc/ryu/faucet/gauge.yaml ]; then
-#        echo "gauge.yaml linked"
-#        ln -s /usr/etc/ryu/faucet/gauge.yaml /etc/faucet/gauge.yaml
-#    else
-#        echo "gauge.yaml link not requied"
-#    fi
-
 
     if id -u $USER > /dev/null 2>&1; then
         chown ${USER}:${GROUP} /var/log/gauge

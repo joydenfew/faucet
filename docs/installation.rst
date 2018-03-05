@@ -10,11 +10,11 @@ You will need to provide an initial configuration files for FAUCET and Gauge, an
 
 .. code:: console
 
-  mkdir -p /etc/ryu/faucet
+  mkdir -p /etc/faucet
   mkdir -p /var/log/ryu/faucet
   mkdir -p /var/log/ryu/gauge
-  $EDITOR /etc/ryu/faucet/faucet.yaml
-  $EDITOR /etc/ryu/faucet/gauge.yaml
+  $EDITOR /etc/faucet/faucet.yaml
+  $EDITOR /etc/faucet/gauge.yaml
 
 This example ``faucet.yaml`` file creates an untagged VLAN between ports 1 and 2 on DP 0x1. See :doc:`configuration` for
 more advanced configuration. See :doc:`vendors/index` for how to configure your switch.
@@ -40,7 +40,7 @@ See :doc:`configuration` for more advanced configuration.
 .. code:: yaml
 
   faucet_configs:
-      - '/etc/ryu/faucet/faucet.yaml'
+      - '/etc/faucet/faucet.yaml'
   watchers:
     port_stats:
         dps: ['switch-1']
@@ -292,7 +292,7 @@ Next step is to configure some dashboards, you can add some we have `prepared ea
 or `create your own <http://docs.grafana.org/features/datasources/prometheus/>`_.
 
 You will need to supply your own faucet.yaml and gauge.yaml configuration in the VM.
-There are samples provided at /etc/ryu/faucet/faucet.yaml and /etc/ryu/faucet/gauge.yaml.
+There are samples provided at /etc/faucet/faucet.yaml and /etc/faucet/gauge.yaml.
 
 Finally you will need to point one of the supported OpenFlow vendors at the controller VM,
 port 6653 is the Faucet OpenFlow control channel and 6654 is the Gauge OpennFlow control channel for monitoring.
