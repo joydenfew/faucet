@@ -1,0 +1,25 @@
+# Is performed before the scripts in the stages step
+before_script:  
+  #- source /etc/profile
+
+# Defines stages which are to be executed
+stages:  
+  - build
+
+# Stage "build"
+run-build:  
+  stage: build
+  script:
+    - apt-get debhelper dh-systemd git python3-pkg-resources python3-all python3-setuptools python3-pbr 
+    - dpkg-buildpackage -us -uc
+    - mkdir build
+    - mv *.deb build/
+
+  # This stage is only executed for new tags
+  only:
+    - tags
+
+  # The files which are to be made available in GitLab
+  artifacts:
+    paths:
+      - build/*
