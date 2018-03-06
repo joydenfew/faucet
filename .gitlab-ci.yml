@@ -1,0 +1,47 @@
+image: registry.gitlab.com/joydenfew/faucetsdn
+
+stages:  
+  - build
+  - deploy
+
+run-build:  
+  stage: build
+  script:
+    - apt-get update && apt-get upgrade -y
+    - cd /builds/joydenfew/faucetSDN
+    - echo "Installing packages required for package building"
+    - TAG="git describe --tags"
+    - TAG=$($TAG)
+    - TAG="${TAG//[!0-9.-]/}"
+    - echo "installing build deps"
+    - apt-get upgrade -y && mk-build-deps -i -r -t 'apt-get -f -y --force-yes'
+    - export DEBEMAIL='jfh13@students.waikato.ac.nz' && export DEBFULLNAME='Jayden Hewer'
+    - debchange --newversion $TAG -b "Package automatically generated for new version of faucet"
+    - sed -i -e "s/python3-faucet (= .\+)/python3-faucet (= $TAG)/" debian/control
+    - sed -i -e "s/faucet (= .\+)/faucet (= $TAG)/" debian/control
+    - sed -i -e "s/gauge (= .\+)/gauge (= $TAG)/" debian/control
+    - fakeroot debian/rules binary
+    - mkdir build
+    - mv ../*.deb build/
+  artifacts:
+    paths:
+      - build/*
+  only:
+      - tags
+
+deploy-package:
+  stage: deploy
+  script:
+    - cd /builds/joydenfew/faucetSDN/build
+    - echo "{\"url\":\"https://packagecloud.io\",\"token\":\"$TOKEN\"}" > ~/.packagecloud
+    - cat ~/.packagecloud
+    - package_cloud push Student/faucet/debian/jessie *.deb
+    - package_cloud push Student/faucet/debian/stretch *.deb
+    - package_cloud push Student/faucet/debian/buster *.deb
+    - package_cloud push Student/faucet/ubuntu/xenial *.deb
+    - package_cloud push Student/faucet/ubuntu/yakkety *.deb
+    - package_cloud push Student/faucet/ubuntu/zesty *.deb
+    - package_cloud push Student/faucet/ubuntu/artful *.deb
+    - package_cloud push Student/faucet/ubuntu/bionic *.deb
+  only:
+      - tags
