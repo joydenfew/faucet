@@ -14,18 +14,25 @@ run-build:
   script:
     - apt-get update
     - cd /builds/joydenfew/faucetSDN
+    - echo "Installing packages required for package building"
     - apt-get install -y equivs devscripts dpkg-dev quilt curl nano apt-transport-https apt-utils ssl-cert ca-certificates gnupg lsb-release debhelper dh-systemd git
     - TAG="git describe --tags"
     - echo "deb https://packagecloud.io/faucetsdn/faucet/$(lsb_release -si | awk '{print tolower($0)}')/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/faucet.list && curl -L https://packagecloud.io/faucetsdn/faucet/gpgkey | apt-key add - && apt-get update
+    - echo "installing build deps"
     - apt-get upgrade -y && mk-build-deps -i -r -t 'apt-get -f -y --force-yes'
+    - export DEBEMAIL='jfh13@students.waikato.ac.nz' && export DEBFULLNAME='Jayden Hewer'
+    - debchange --newversion $($TAG) -b "Package automatically generated for new version of faucet"
+    - sed -i -e "s/python3-faucet (= .\+)/python3-faucet (= $($TAG))/" debian/control
+    - sed -i -e "s/faucet (= .\+)/faucet (= $($TAG))/" debian/control
+    - sed -i -e "s/gauge (= .\+)/gauge (= $($TAG))/" debian/control
     - fakeroot debian/rules binary
     - mkdir build
     - mv ../*.deb build/
   only:
     - tags
 
+
   # The files which are to be made available in GitLab
   artifacts:
     paths:
       - build/*
-
