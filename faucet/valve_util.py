@@ -69,13 +69,13 @@ DEFAULTS = {
     'FAUCET_EXCEPTION_LOG': _PREFIX + '/var/log/faucet/faucet_exception.log:' + _PREFIX + '/var/log/ryu/faucet/faucet_exception.log',
     'FAUCET_PROMETHEUS_PORT': '9302',
     'FAUCET_PROMETHEUS_ADDR': '0.0.0.0',
-    'FAUCET_PIPELINE_DIR': _PREFIX + '/etc/faucet' + _PREFIX + '/etc/ryu/faucet',
-    'GAUGE_CONFIG': _PREFIX + '/etc/faucet/gauge.yaml' + _PREFIX + '/etc/ryu/faucet/gauge.yaml',
+    'FAUCET_PIPELINE_DIR': _PREFIX + '/etc/faucet:' + _PREFIX + '/etc/ryu/faucet',
+    'GAUGE_CONFIG': _PREFIX + '/etc/faucet/gauge.yaml:' + _PREFIX + '/etc/ryu/faucet/gauge.yaml',
     'GAUGE_CONFIG_STAT_RELOAD': False,
     'GAUGE_LOG_LEVEL': 'INFO',
     'GAUGE_PROMETHEUS_ADDR': '0.0.0.0',
-    'GAUGE_EXCEPTION_LOG': _PREFIX + '/var/log/faucet/gauge_exception.log' + _PREFIX + '/var/log/ryu/faucet/gauge_exception.log',
-    'GAUGE_LOG': _PREFIX + '/var/log/faucet/gauge.log' + _PREFIX + '/var/log/ryu/faucet/gauge.log'
+    'GAUGE_EXCEPTION_LOG': _PREFIX + '/var/log/faucet/gauge_exception.log:' + _PREFIX + '/var/log/ryu/faucet/gauge_exception.log',
+    'GAUGE_LOG': _PREFIX + '/var/log/faucet/gauge.log:' + _PREFIX + '/var/log/ryu/faucet/gauge.log'
 }
 
 
